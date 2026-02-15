@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Lic. Gabriel Roldán Carpinteyro | Psicología Clínica & Organizacional</title>
+  
+  <link rel="icon" href="assets/img/psicologiaLogo.png" type="image/x-icon">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  </head>
+<header id="header" class="fixed-top shadow-sm bg-white py-2">
+  <div class="container d-flex align-items-center justify-content-between px-2 px-md-3">
+    
+    <div class="brand-container d-flex align-items-center">
+      <a href="index.html" class="sitename text-decoration-none d-flex align-items-center">
+        <img src="assets/img/psicologiaLogo.png" alt="Logotipo" class="brand-icon">
+        <div class="ms-2 d-flex flex-column" style="line-height: 1.1;">
+          <span class="fw-bold text-dark d-none d-md-inline">Gabriel Roldán Carpinteyro</span>
+          <span class="fw-bold text-dark d-md-none" style="font-size: 0.9rem;">Gabriel Roldán</span>
+          <small class="text-muted d-md-none" style="font-size: 0.6rem;">Psicólogo</small>
+        </div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+    :root {
+      --primary-color: #76949F;
+      --gold-color: #D4A373; 
+      --bg-light: #FAF9F6;
+      --text-dark: #4A4A4A;
+      --soft-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      --blue-check: #3B82F6;
+    }
+
+    /* GENERALES */
+    body { font-family: 'Raleway', sans-serif; color: var(--text-dark); background-color: var(--bg-light); overflow-x: hidden; }
+    h1, h2, h3, h4, .sitename { font-family: 'Playfair Display', serif; }
+    .typed { color: var(--gold-color) !important; font-weight: 700; }
+
+    /* NAVEGACIÓN Y HEADER */
+    #header { background: rgba(250, 249, 246, 0.95); backdrop-filter: blur(10px); padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
+    
+    .brand-container { display: flex; align-items: center; gap: 12px; }
+    .sitename { display: flex; align-items: center; gap: 5px; text-decoration: none; font-weight: 700; color: #07063f; font-size: 1.2rem; }
+    .brand-icon { width: 40px; height: auto; display: block; }
+    .divider { width: 1px; height: 25px; background-color: #b4b0ab; margin: 0 15px; }
+    .tagline { font-size: 0.9rem; color: #7A929B; font-weight: 400; font-style: italic; }
+    
+    .btn-contact-nav { background: var(--primary-color); color: white !important; border-radius: 50px; padding: 8px 25px !important; border: none; font-weight: 600; transition: 0.3s; text-decoration: none; display: inline-block; cursor: pointer; }
+    .nav-link:hover { color: #D1A273; }
+
+    /* MENÚ MÓVIL (OFFCANVAS) */
+    .boton-menu-circular { background: transparent; border: none; padding: 0; cursor: pointer; }
+    .icono-circulo { width: 42px; height: 42px; border: 2px solid #7A929B; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; }
+    .icono-circulo span { display: block; width: 18px; height: 2px; background-color: #7A929B; }
+
+    .menu-lateral-cel { background-color: #7A929B !important; width: 280px !important; }
+    .enlaces-cel a { color: white !important; text-decoration: none; font-size: 1.2rem; display: block; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+    /* HERO CON MARCO ANIMADO */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; background: linear-gradient(135deg, #FAF9F6 0%, #F1F2E9 100%); }
+    .photo-frame { position: relative; width: 100%; max-width: 450px; aspect-ratio: 4 / 5; padding: 10px; background: white; border-radius: 20px; box-shadow: var(--soft-shadow); overflow: hidden; }
+    .photo-frame::before { content: ""; position: absolute; width: 150%; height: 150%; background: conic-gradient(transparent, var(--primary-color), transparent 30%); animation: rotate 6s linear infinite; top: -25%; left: -25%; }
+    .photo-frame::after { content: ""; position: absolute; inset: 4px; background: white; border-radius: 16px; z-index: 0; }
+    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .profile-img-full { position: relative; width: 100%; height: 100%; object-fit: cover; border-radius: 14px; z-index: 1; }
+
+    /* SECCIONES Y TÍTULOS */
+    .section-title-line { width: 50px; height: 3px; background: var(--gold-color); margin: 15px auto 40px; }
+    .section-title-line.start { margin: 15px 0 30px 0; }
+
+    /* SOBRE MÍ Y EDU */
+    .edu-card { background: white; padding: 30px; border-radius: 20px; box-shadow: var(--soft-shadow); text-align: center; border-top: 5px solid var(--gold-color); }
+    .buap-logo { width: 80px; margin-top: 15px; filter: grayscale(1); opacity: 0.7; transition: 0.3s; }
+    .edu-card:hover .buap-logo { filter: grayscale(0); opacity: 1; }
+
+    /* ENFOQUE TERAPÉUTICO */
+    .enfoque-pill { background: white; padding: 15px 25px; border-radius: 50px; display: flex; align-items: center; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid rgba(212, 163, 115, 0.1); transition: 0.3s; }
+    .enfoque-pill:hover { transform: scale(1.05); border-color: var(--gold-color); }
+    .enfoque-pill i { color: var(--gold-color); font-size: 1.4rem; margin-right: 15px; }
+
+    /* ESPECIALIDADES (Cuadros fijos) */
+    .spec-box {
+        width: 100%; 
+        max-width: 200px; 
+        height: 130px; 
+        margin: 10px auto; 
+        border-radius: 20px; 
+        border: 1px solid #e0e0e0;
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center;
+        background: #f5f5f5; 
+        transition: 0.3s;
+        box-sizing: border-box; 
+    }
+
+    .spec-box:hover { 
+        border-color: var(--gold-color); 
+        transform: translateY(-5px); 
+        background: white; 
+        box-shadow: var(--soft-shadow); 
+    }
+
+    .spec-box i, .icon-custom { 
+        font-size: 1.8rem; 
+        color: var(--primary-color); 
+        height: 40px;
+        margin: 0 0 8px 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .spec-box span { 
+        font-size: 16px; 
+        font-weight: 600; 
+        color: #555;
+        margin: 0; 
+    }
+
+    /* TARJETA INTERACTIVA DORADA */
+    .interactive-quote-card { background: white; padding: 45px; border-radius: 30px; border: 2px solid transparent; box-shadow: var(--soft-shadow); position: relative; cursor: pointer; transition: 0.5s; }
+    .interactive-quote-card:hover { background: var(--gold-color); border-color: #C19262; transform: translateY(-10px); }
+    .interactive-quote-card:hover p, .interactive-quote-card:hover h6, .interactive-quote-card:hover small { color: white !important; }
+
+    /* SERVICIOS */
+    .custom-card { background: white; border-radius: 20px; padding: 30px; height: 100%; box-shadow: var(--soft-shadow); transition: 0.3s; border-bottom: 3px solid transparent; }
+    .custom-card:hover { border-bottom: 3px solid var(--gold-color); transform: translateY(-5px); }
+    .icon-box { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; }
+
+    /* CONTACTO FINAL */
+    .info-card-design { background: white; border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; border: 1px solid #eeeeee; max-width: 600px; margin: 0 auto; }
+    .info-card-design .quote-icon { font-size: 2.5rem; color: #eeeeee; position: absolute; top: 20px; left: 20px; }
+    .profile-mini { display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 20px; margin-bottom: 20px; }
+    .profile-mini img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+    .phone-number { font-family: 'Playfair Display', serif; font-weight: 700; color: #444; font-size: 2rem; margin-bottom: 25px; }
+    .btn-whatsapp-custom { background-color: #25D366; color: white; border-radius: 50px; padding: 12px 30px; text-decoration: none; display: inline-flex; align-items: center; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+    .btn-whatsapp-custom:hover { background-color: #128C7E; color: white; transform: translateY(-3px); }
+
+    /* MODAL DE CONTACTO */
+    .modal-content { border-radius: 12px; border: none; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    .contact-modal-body { display: flex; flex-wrap: wrap; padding: 0; }
+    .modal-info-side { background-color: #1a1d20; color: white; padding: 50px 40px; flex: 1; min-width: 320px; display: flex; flex-direction: column; }
+    .modal-info-side h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 25px; }
+    .modal-info-side p.instr { color: #ccc; font-size: 0.95rem; margin-bottom: 35px; }
+    .contact-detail { display: flex; align-items: flex-start; margin-bottom: 20px; color: #fff; }
+    .contact-detail i { margin-right: 15px; margin-top: 5px; }
+    .modal-form-side { padding: 50px 45px; flex: 1.4; min-width: 350px; background: #fff; position: relative; }
+    .form-control-custom { background-color: #f8f9fa; border: 1px solid transparent; border-radius: 8px; padding: 12px 15px; margin-bottom: 20px; width: 100%; }
+    .form-control-custom:focus { outline: none; border-color: #76949F; background: #fff; }
+    .btn-submit-modal { background-color: #76949F; color: white; border: none; border-radius: 50px; padding: 14px; width: 100%; font-weight: 600; box-shadow: 0 4px 12px rgba(118, 148, 159, 0.3); }
+
+    .direct-write { margin-top: 20px; text-align: center; }
+    .direct-write p { font-size: 0.9rem; color: #6c757d; margin-bottom: 12px; }
+
+    .btn-whatsapp-modal {
+        display: inline-flex; align-items: center; justify-content: center;
+        background-color: #25d366; color: white !important;
+        padding: 12px 30px; border-radius: 50px; font-weight: 600;
+        text-decoration: none !important; transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); border: none;
+        animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+    /* FIJAR HEADERS CON MODAL */
+    .modal-open #header, .modal-open .fixed-top { padding-right: 0 !important; margin-right: 0 !important; }
+    body.modal-open { padding-right: 0 !important; overflow-y: auto !important; }
+
+    /* =============================================
+        MEDIA QUERIES - DISEÑO RESPONSIVO CORREGIDO
+       ============================================= */
+
+    /* AJUSTE PARA PC */
+    @media (min-width: 992px) {
+        .spec-box:has(i.fa-brain),
+        .box-estres { margin-top: 18px !important; }
+    }
+
+    /* AJUSTE PARA MÓVIL (768px y menor) */
+    @media (max-width: 768px) {
+        /* ESTO HACE QUE EL BOTÓN SE QUEDE PEGADO A LA IZQUIERDA Y NO SE MUEVA AL BAJAR */
+        .btn-contact-nav {
+            position: fixed !important; /* Fixed lo deja anclado a la pantalla, no al contenido */
+            left: 0 !important;
+            top: 20% !important; 
+            z-index: 9999 !important;
+            border-radius: 0 50px 50px 0 !important; 
+            padding: 10px 20px !important;
+            background: #2ecc71 !important; /* Color verde de tu imagen */
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        #experiencia .row.g-2 > div {
+            width: 100% !important;
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+        }
+
+        .spec-box {
+            width: 100% !important;
+            max-width: 490px !important; 
+            height: 130px !important;
+            margin: 10px auto !important;
+        }
+
+        .spec-box:has(i.fa-brain),
+        .box-estres {
+            margin-top: 10px !important; 
+        }
+    }
+
+    :root {
+      --verde-agua-btn: #8EBCAC; 
+    }
+
+    /* OCULTO EN PC POR DEFECTO */
+    .btn-flotante-mensaje {
+        display: none !important;
+    }
+
+    /* SOLO VISIBLE EN DISPOSITIVOS MÓVILES (Menos de 992px) */
+    @media (max-width: 991px) {
+        .btn-flotante-mensaje {
+            display: flex !important; /* Aparece solo en móvil */
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
+            width: 60px !important;
+            height: 60px !important;
+            background-color: var(--verde-agua-btn) !important;
+            color: white !important;
+            border-radius: 50% !important;
+            border: none !important;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px !important;
+            z-index: 9999 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Se esconde cuando el modal está abierto */
+        body.modal-open .btn-flotante-mensaje {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: scale(0.5);
+        }
+    }
+  
+</style>
+
+<header id="header" class="fixed-top shadow-sm bg-white py-2">
+  <div class="container d-flex align-items-center justify-content-between pe-1" style="max-width: 1200px;">
+    
+    <div class="brand-container">
+      <a href="index.html" class="sitename text-decoration-none d-flex align-items-center">
+        <img src="assets/img/psicologiaLogo.png" alt="Logotipo" class="brand-icon">
+        <div class="ms-2 d-flex flex-column" style="line-height: 1.1;">
+          <span class="fw-bold text-dark" style="font-size: 1.1rem;">Gabriel Roldán</span>
+          <small class="text-muted" style="font-size: 0.75rem;">Psicólogo</small>
+        </div>
+      </a>
+    </div>
+
+    <nav id="navmenu" class="d-none d-lg-block">
+      <ul class="d-flex list-unstyled m-0 align-items-center">
+        <li><a href="#hero" class="px-3 text-decoration-none text-dark">Inicio</a></li>
+        <li><a href="#about" class="px-3 text-decoration-none text-dark">Sobre mí</a></li>
+        <li><a href="#experiencia" class="px-3 text-decoration-none text-dark">Especialidades y Experiencia</a></li>
+        <li><a href="#contacto" class="px-3 text-decoration-none text-dark">Servicios y Tarifas</a></li>
+        <li><button class="btn-contact-nav ms-3" data-bs-toggle="modal" data-bs-target="#modalContacto">Contáctanos</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<button id="btnMensajeFlotante" class="btn-flotante-mensaje" data-bs-toggle="modal" data-bs-target="#modalContacto">
+  <i class="fas fa-envelope"></i>
+</button>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6" data-aos="fade-up">
+            <h2 class="display-5 fw-bold">Acompañamiento profesional para tu <br><span class="typed"></span></h2>
+            <p class="lead mt-4 text-muted">Acompaño sin prejuicio, con procesos donde el dolor <span style="color:var(--gold-color); font-weight:600;">se transforma en reencuentro y los caminos vuelven a abrirse.”</span></p>
+          </div>
+          <div class="col-lg-6 d-flex justify-content-center" data-aos="zoom-in">
+            <div class="photo-frame">
+              <img src="assets/img/GabrielRoldan.jpg" alt="Lic. Gabriel Roldán" class="profile-img-full">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-5 bg-white">
+      <div class="container py-5">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-7" data-aos="fade-right">
+            <h2 class="fw-bold">Sobre mí</h2>
+            <div class="section-title-line start"></div>
+            <p class="lead text-dark" style="line-height: 1.8; text-align: justify;">
+              <span>Gabriel Roldán</span>Lic. en psicología con enfoque clínico–emocional, orientado al bienestar integral de los colaboradores. Experiencia en acompañamiento psicológico, contención emocional, intervención en crisis y prevención del desgaste laboral en contextos organizacionales. Me caracterizo por una mirada empática, cercana y profesional, enfocada en generar espacios de trabajo más saludables y humanos.
+            </p>
+          </div>
+          <div class="col-lg-5" data-aos="fade-left">
+          <div class="edu-card shadow-sm">
+            <i class="bi bi-mortarboard-fill mb-3" style="font-size: 2.5rem; color: var(--gold-color);"></i>
+            <h4 class="fw-bold">EDUCACIÓN</h4>
+            <p class="text-muted fw-bold mb-1">2019 - 2024</p>
+            <h5 class="fw-bold small">BENEMÉRITA UNIVERSIDAD AUTÓNOMA DE PUEBLA</h5>
+            <p class="mb-1 small">• Licenciatura en Psicología (Titulado)</p>
+            <p class="text-primary fw-bold small">Cédula Profesional: 14686367</p>
+            <img src="assets/img/buap.png" alt="BUAP" class="buap-logo" style="width: 300px; height: auto;">
+          </div>
+        </div>
+
+    <section class="py-5 bg-light">
+      <div class="container py-5">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <h2 class="fw-bold mb-4">Mi Enfoque Terapéutico</h2>
+            <div class="enfoque-pill"><i class="bi bi-shield-check"></i><span>Ética Profesional & Confidencialidad</span></div>
+            <div class="enfoque-pill"><i class="bi bi-heart-pulse"></i><span>Empatía & Contención Emocional</span></div>
+            <div class="enfoque-pill"><i class="bi bi-eye-fill"></i><span>Escucha Activa & Intervención en Crisis</span></div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="interactive-quote-card">
+              <i class="bi bi-quote display-1 opacity-25 position-absolute top-0 end-0 me-4 mt-2"></i>
+              <p class="h5 fw-light lh-lg mb-5">"Soy psicólogo clínico con experiencia en el acompañamiento emocional de adolescentes y adultos. A lo largo de mi formación me he capacitado en temas como ansiedad, autoestima, salud mental y procesos emocionales complejos. Mi enfoque es cálido y centrado en las necesidades de cada persona."</p>
+              <div class="d-flex align-items-center border-top pt-4">
+                <img src="assets/img/GabrielRoldan.jpg" class="me-3 rounded-circle shadow-sm" alt="Gabriel Roldán" style="width: 60px; height: 60px; object-fit: cover;">
+                <div>
+                  <h6 class="fw-bold mb-0">Lic. Gabriel Roldán Carpinteyro</h6>
+                  <small class="text-muted">Psicólogo | BUAP</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ <section id="experiencia" class="py-5 bg-white">
+      <div class="container py-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="fw-bold" style="font-family: 'Playfair Display', serif;">Especialidades y Experiencia</h2>
+          <div class="section-title-line"></div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-4" data-aos="fade-right">
+            <h4 class="fw-bold mb-4" style="color: var(--gold-color);">Especialidad</h4>
+            <div class="row g-2">
+              <div class="col-6"><div class="spec-box"><i class="bi bi-wind"></i><span class="small fw-bold">Ansiedad</span></div></div>
+              <div class="col-6"><div class="spec-box"><i class="bi bi-fire"></i><span class="small fw-bold">Control de Ira</span></div></div>
+              <div class="col-6"><div class="spec-box"><i class="bi bi-heartbreak"></i><span class="small fw-bold">Duelo</span></div></div>
+             <div class="spec-box">
+                <i class="fas fa-brain"></i> 
+                <span class="fw-bold">Estrés</span>
+            </div>
+            </div>
+          </div>
+
+          
+          <div class="col-lg-8" data-aos="fade-left">
+            <h4 class="fw-bold mb-4" style="color: var(--primary-color);">Experiencia</h4>
+            <div class="custom-card p-4">
+              <div class="row">
+                <div class="col-md-6">
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-check2-circle text-primary me-2"></i> Problemas relacionales</li>
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-check2-circle text-primary me-2"></i> Violencia intrafamiliar y de género</li>
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-check2-circle text-primary me-2"></i> Adicción a internet y videojuegos</li>
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-check2-circle text-primary me-2"></i> Intervención en crisis</li>
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-check2-circle text-primary me-2"></i> Primeros auxilios psicológicos</li>
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-check2-circle text-primary me-2"></i> Impresiones diagnósticas</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-clipboard2-check text-success me-2"></i> Evaluación psicológica</li>
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-briefcase text-success me-2"></i> Salud ocupacional</li>
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-people text-success me-2"></i> Desarrollo de habilidades socio-emocionales</li>
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-patch-exclamation text-success me-2"></i> Burnout</li>
+                    <li class="mb-3 d-flex align-items-center"><i class="bi bi-megaphone text-success me-2"></i> Talleres emocionales</li>
+                    <li class="mb-0 d-flex align-items-center"><i class="bi bi-building-check text-success me-2"></i> Contención emocional en instituciones</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-5 bg-light">
+      <div class="container py-5 text-center">
+        <h2 class="fw-bold">Experiencia Profesionales</h2>
+        <div class="section-title-line"></div>
+        <div class="row g-4 mt-2">
+          <div class="col-lg-4" data-aos="fade-up"><div class="custom-card"><i class="bi bi-heart-pulse icon-box"></i><h5 class="fw-bold">Atención Clínica</h5><p class="small text-muted">Acompañamiento psicológico breve y atención a adolescentes con ansiedad y procrastinación temerosa.</p></div></div>
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100"><div class="custom-card"><i class="bi bi-building icon-box"></i><h5 class="fw-bold">Psicología Laboral</h5><p class="small text-muted">Prevención de riesgos psicosociales, contención emocional y prevención del desgaste laboral (Burnout).</p></div></div>
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200"><div class="custom-card"><i class="bi bi-megaphone icon-box"></i><h5 class="fw-bold">Psicoeducación</h5><p class="small text-muted">Realización de pláticas, talleres y aplicación de pruebas psicológicas.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="py-5 bg-light">
+  <div class="container py-5">
+    <div class="row g-5 align-items-start"> <div class="col-lg-5" data-aos="fade-right">
+        <h2 class="fw-bold mb-4">Servicios</h2>
+        <div class="section-title-line start"></div>
+        <p class="text-muted mb-4">Acompañamiento psicológico individual bajo enfoques terapéuticos especializados:</p>
+        
+        <div class="d-flex flex-column gap-3">
+          <div class="enfoque-pill m-0 border-0 shadow-sm bg-white">
+            <i class="bi bi-palette"></i>
+            <span class="fw-bold">Arteterapia</span>
+          </div>
+      <div class="enfoque-pill m-0 border-0 shadow-sm bg-white">
+    <img src="assets/img/TCC.png" alt="Icono TCC" style="width:25px; height:25px; margin-right:6px;">
+    <span class="fw-bold">TCC (Cognitivo-Conductual)</span>
+</div>
+
+
+          <div class="enfoque-pill m-0 border-0 shadow-sm bg-white">
+            <i class="bi bi-puzzle"></i>
+            <span class="fw-bold">Terapia Integrativa</span>
+          </div>
+          <div class="enfoque-pill m-0 border-0 shadow-sm bg-white">
+            <i class="bi bi-flower1"></i>
+            <span class="fw-bold">Terapia Gestalt</span>
+          </div>
+          <div class="enfoque-pill m-0 border-0 shadow-sm bg-white">
+            <i class="bi bi-lightning-charge"></i>
+            <span class="fw-bold">Terapia Centrada en Soluciones</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7" data-aos="fade-left">
+        
+        <div class="mb-4 ps-lg-4">
+          <h2 class="fw-bold mb-4">Tarifas y formas de pago</h2>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <h6 class="fw-bold text-uppercase small text-muted mb-2">
+                <i class="bi bi-cash-stack me-2"></i>Tarifas
+              </h6>
+              <p class="mb-1">Terapia individual <strong>$250</strong></p>
+              <p class="text-muted small">Se ofrecen precios variables según ingresos</p>
+            </div>
+            <div class="col-md-6 mb-3">
+              <h6 class="fw-bold text-uppercase small text-muted mb-2">
+                <i class="bi bi-credit-card me-2"></i>Formas de pago
+              </h6>
+              <p class="small">Efectivo, Mastercard, Paypal, Transferencia bancaria, Visa</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card-design text-start m-0" style="max-width: 100%;">
+          <i class="bi bi-quote quote-icon"></i>
+          <p class="main-text mb-4" style="font-size: 1.1rem; color: #444; font-style: italic;">
+            Ofrezco sesiones en modalidad en línea. Mi espacio es seguro y cómodo para el trabajo emocional. La inversión por sesión es de $250 MXN. Puedes pagar por transferencia y efectivo el mismo día de tu cita. Si tienes dudas, estaré encantado de ayudarte.
+          </p>
+          
+          <div class="profile-mini">
+            <img src="assets/img/GabrielRoldan.jpg" alt="Gabriel Roldán">
+            <div>
+              <h6 class="mb-0">Lic. Gabriel Roldán Carpinteyro</h6>
+              <span class="small text-muted">Psicólogo | BUAP</span>
+            </div>
+          </div>
+
+          <div class="ps-2 mt-4">
+            <p class="small text-muted mb-1">Llama para organizar una primera consulta gratuita:</p>
+            <div class="d-flex gap-3 flex-wrap mt-2">
+              <a href="https://wa.me/522212759745" target="_blank" class="btn-whatsapp-custom text-decoration-none">
+                <i class="bi bi-whatsapp me-2"></i> WhatsApp
+              </a>
+              <button class="btn btn-outline-dark rounded-pill px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalContacto">
+                <i class="bi bi-envelope me-2"></i> Enviar Mensaje
+              </button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+    
+  <div class="modal fade" id="modalContacto" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="contact-modal-body">
+          
+          <div class="modal-info-side">
+            <h2>Iniciemos una conversación</h2>
+            <p class="instr">Resuelve tus dudas o agenda una primera sesión informativa.</p>
+            
+            <div class="contact-detail">
+              <i class="bi bi-geo-alt"></i>
+              <span>Puebla, México</span>
+            </div>
+            
+            <div class="contact-detail">
+              <i class="bi bi-envelope"></i>
+              <span>psic.gabriel.rc@gmail.com</span>
+            </div>
+
+            <div class="direct-write">
+              <p>También puedes escribirme directamente:</p>
+              <a href="https://wa.me/522212759745" class="btn-whatsapp-modal">
+                <i class="bi bi-whatsapp me-2"></i> WhatsApp 
+              </a>
+            </div>
+          </div>
+
+          <div class="modal-form-side">
+            <button type="button" class="btn-close-custom" data-bs-dismiss="modal">&times;</button>
+            <h3>Envíame un mensaje</h3>
+            
+            <form action="https://formspree.io/f/mbdagapv" method="POST">
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="form-label-custom">Nombre Completo</label>
+                  <input type="text" name="nombre" class="form-control-custom" placeholder="Tu nombre..." required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label-custom">Correo Electrónico</label>
+                  <input type="email" name="email" class="form-control-custom" placeholder="tu@correo.com" required>
+                </div>
+              </div>
+              
+              <label class="form-label-custom">Mensaje</label>
+              <textarea name="mensaje" class="form-control-custom" rows="4" placeholder="¿En qué puedo ayudarte?" required></textarea>
+              
+              <button type="submit" class="btn-submit-modal">Enviar</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <footer class="py-4 text-center text-muted border-top bg-white">
+  <small>© 2026 Lic. Gabriel Roldán Carpinteyro | Psicólogo BUAP</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<script>
+  // Inicialización de AOS (Animaciones)
+  AOS.init({ 
+    duration: 1000, 
+    once: true 
+  });
+
+  // Inicialización de Typed.js
+  // Asegúrate de tener un elemento con la clase "typed" en tu HTML, por ejemplo:
+  // <span class="typed"></span>
+  new Typed('.typed', {
+    strings: [
+      "salud mental.",
+      "bienestar emocional.",
+      "equilibrio personal."
+    ],
+    typeSpeed: 60,
+    backSpeed: 30,
+    backDelay: 2000,
+    startDelay: 500,
+    loop: true,
+    smartBackspace: true,
+    showCursor: true,
+    cursorChar: '|'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var myModal = document.getElementById('modalContacto');
+        var btn = document.getElementById('btnMensajeFlotante');
+
+        if (myModal && btn) {
+            // Regresa al cerrar el modal
+            myModal.addEventListener('hidden.bs.modal', function () {
+                btn.style.opacity = "1";
+                btn.style.visibility = "visible";
+                btn.style.transform = "scale(1)";
+            });
+
+            // Se oculta al hacer clic
+            btn.addEventListener('click', function() {
+                this.style.opacity = "0";
+                this.style.transform = "scale(0.8)";
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
